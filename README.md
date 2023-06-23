@@ -16,7 +16,7 @@
 
 This tool was created to help me break down my projects into smaller tasks and I wanted to experiment with using ElectronJS and LocalStorage.
 
-The website can be found at [here]().
+The website can be found at [here](https://parker06.github.io/ProjectPlanner/).
 
 ## Tech Stack
 
