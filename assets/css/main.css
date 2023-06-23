@@ -1,0 +1,354 @@
+:root {
+    --background-color: rgb(0, 0, 0);
+    --secondary-color: rgb(240, 240, 240);
+    --accent-color: rgb(0, 94, 170);
+    --gray: rgb(255, 255, 255, 0.1);
+    --dark-blue: rgb(2, 62, 138);
+    --navy: rgb(55, 56, 72);
+    --mid-navy: rgb(38, 40, 54);
+    --dark-navy: rgb(32, 33, 41);
+    --light-navy: rgb(86, 103, 129);
+    --blue: rgb(0, 119, 182);
+    --light-blue: rgb(0, 150, 199);
+    --light-gray: rgb(238, 238, 238);
+    --red: rgb(220, 53, 63);
+    --dark-red: rgb(167, 25, 48)
+  }  
+
+  * {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Fira sans", sans-serif;
+}
+
+#titlebar {
+    display: block;
+    position: fixed;
+    height: 46px;
+    width: calc(100% - 2px);
+    
+  }
+  
+  .maximized #titlebar {
+    width: 100%;
+    padding: 0;
+  }
+  
+  #titlebar {
+    padding: 4px;
+  }
+  
+  #titlebar #drag-region {
+    width: 100%;
+    height: 100%;
+    -webkit-app-region: drag;
+  }
+  
+  #titlebar {
+    color: #FFF;
+    margin-bottom: 16px;
+  }
+  
+  #titlebar #drag-region {
+    display: grid;
+    grid-template-columns: auto 138px;
+  }
+  
+  #window-title {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 18px;
+  }
+  
+  .maximized #window-title {
+    margin-left: 12px;
+  }
+  
+  #window-title span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.5;
+  }
+  
+  #window-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 46px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+  
+  #window-controls {
+    -webkit-app-region: no-drag;
+  }
+  
+  #window-controls .button {
+    grid-row: 1 / span 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  @media (-webkit-device-pixel-ratio: 1.5), (device-pixel-ratio: 1.5),
+  (-webkit-device-pixel-ratio: 2), (device-pixel-ratio: 2),
+  (-webkit-device-pixel-ratio: 3), (device-pixel-ratio: 3) {
+    #window-controls .icon {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  
+  #window-controls .button {
+    user-select: none;
+  }
+  
+  #window-controls .button:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  
+  #window-controls .button:active {
+    background: rgba(255,255,255,0.2);
+  }
+  
+  #close-button:hover {
+    background: #E81123 !important;
+  }
+  
+  #close-button:active {
+    background: #F1707A !important;
+  }
+  #close-button:active .icon {
+    filter: invert(1);
+  }
+  
+  #min-button {
+    grid-column: 1;
+  }
+  #max-button, #restore-button {
+    grid-column: 2;
+  }
+  #close-button {
+    grid-column: 3;
+  }
+  
+  #restore-button {
+    display: none !important;
+  }
+  
+  .maximized #restore-button {
+    display: flex !important;
+  }
+  
+  .maximized #max-button {
+    display: none;
+  }
+  
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	color: #FFF;
+	background-color: var(--navy);
+}
+
+#body-header {
+    padding: 5rem 1rem;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+header h1{ 
+	font-size: 2.5rem;
+	font-weight: 300;
+	color: var(--light-gray);
+	margin-bottom: 1rem;
+}
+
+#new-task-form {
+	display: flex;;
+}
+
+input, button {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+}
+
+#new-task-input {
+	flex: 1 1 0%;
+	background-color: var(--mid-navy);
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-right: 1rem;
+	color: var(--secondary-color);
+	font-size: 1.25rem;
+}
+
+#new-task-input::placeholder {
+	color: var(--grey);
+}
+
+#new-task-input:focus {
+    box-shadow: 0 0 0 2px var(--accent-color);
+    background-color: var(--background-color);
+    opacity: 0.8;
+}
+
+#new-task-submit {
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-color: var(--mid-navy); /* Set the background color to a dark color */
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: 0.4s all ease-in-out;
+  }
+  
+  #new-task-submit:hover {
+    background-color: var(--light-navy); /* Change the background color on hover */
+    transition: 0.4s all ease-in-out;
+  }
+  
+  #new-task-submit::before {
+    content: ""; /* Add a pseudo-element for the background gradient */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, var(--dark-blue), var(--blue));
+    opacity: 0.6; /* Adjust the opacity of the gradient overlay */
+  }
+  
+  #new-task-submit:hover::before {
+    opacity: 1; /* Increase the opacity on hover */
+  }
+  
+  #new-task-submit::after {
+    content: attr(value); /* Use the value attribute as the button text */
+    position: relative;
+    z-index: 1;
+    color: var(--secondary-color); /* Set the text color to white */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .task-list {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  #tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--dark-navy);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin: 0 auto;
+  }
+  
+  .task-list h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--grey);
+    margin-bottom: 1rem;
+  }
+  
+  #tasks .task {
+    display: flex;
+    align-items: center;
+    background-color: var(--mid-navy);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .task .content {
+    flex: 1 1 0%;
+  }
+  
+  .task .content .text {
+    color: var(--light);
+    font-size: 1.5rem;
+    width: 100%;
+    display: block;
+    transition: 0.4s;
+  }
+  
+  .task .content .text:not(:read-only) {
+    color: var(--light-gray);
+    background-color: var(--navy);
+  }
+  
+  .task .actions {
+    display: flex;
+    margin-left: 1rem; /* Adjust margin to create space between content and actions */
+  }
+  
+  .task .actions button {
+    cursor: pointer;
+    margin-right: 0.5rem; /* Adjust margin to create space between buttons */
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.4s;
+  }
+  
+  .task .actions button:hover {
+    opacity: 0.8;
+  }
+  
+  .task .actions button:active {
+    opacity: 0.6;
+  }
+  
+  .task .actions .edit {
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-color: var(--accent-color); /* Set the background color for the "Edit" button */
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .task .actions .edit:hover {
+    background-color: var(--light-blue); /* Change the background color on hover */
+  }
+  
+  .task .actions .delete {
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-color: var(--dark-red); /* Set the background color for the "Delete" button */
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .task .actions .delete:hover {
+    background-color: var(--red); /* Change the background color on hover */
+  }
+  
