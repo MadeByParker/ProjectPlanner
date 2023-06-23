@@ -10,6 +10,10 @@ function createWindow() {
     width: width,
     height: height,
     backgroundColor: '#373848',
+    icon: path.join(__dirname, 'assets', 'distributables', 'logo [32].ico'),
+    resizable: true,
+    fullscreen: false,
+    simpleFullscreen: true,
     webPreferences: {
       nodeIntegration: true,
       preload: path.join(__dirname, 'renderer.js'),
