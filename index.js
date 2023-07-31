@@ -10,7 +10,7 @@ function createWindow() {
     width: width,
     height: height,
     backgroundColor: '#373848',
-    icon: path.join(__dirname, 'assets', 'distributables', 'logo [32].ico'),
+    icon: path.join(__dirname, 'logo [128].ico'),
     resizable: true,
     fullscreen: false,
     simpleFullscreen: true,
@@ -18,7 +18,12 @@ function createWindow() {
       nodeIntegration: true,
       preload: path.join(__dirname, 'renderer.js'),
     },
-    frame: false,
+    trafficLightPosition: { x: 20, y: 32 },
+    titleBarOverlay: {
+        color: '#373848',
+        symbolColor: '#ffffff',
+        height: 45
+    }
   });
 
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
